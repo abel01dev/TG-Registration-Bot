@@ -17,11 +17,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "📋 Commands:\n"
-        "/start - Start the bot\n"
-        "/register - Register your information\n"
-        "/check - Check your registration\n"
-        "/help - Show this message"
+        "Welcome! This is a simple registration bot!\n"
+        "Use the bot with these commands:\n"
+        "/start - Restart the bot.\n"
+        "/register - Enter your information and join.\n"
+        "/check - Check your information if you have registred.\n "
+        "Thank you for using our bot!😊"
     )
 
 def main():
