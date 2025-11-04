@@ -24,3 +24,4 @@ __pycache__/
 *.pyc
 .vscode/
 .DS_Store
+data.json
