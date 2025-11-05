@@ -1,7 +1,11 @@
-import re #to validate regular expressions
+from os import name
+import re
+from turtle import update #to validate regular expressions
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup #for the share contact button
 
 from telegram.ext import CommandHandler, MessageHandler, ConversationHandler, filters, ContextTypes
+from bot.utils.db import add_user
+
 
 ASK_NAME, ASK_PHONE = range(2)
 
@@ -44,10 +48,16 @@ async def get_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data["phone"] = phone
     name = context.user_data["name"]
+
+    add_user(name, phone)
 # directly display that registration is complete no separate function needed
+
+    print(f"✅ Registration complete!\n\nName: {name}\nPhone: {phone}")
+
     await update.message.reply_text(
-        f"✅ Registration complete!\n\nName: {name}\nPhone: {phone}"
-    )
+    f"✅ Registration complete!\n\nName: {name}\nPhone: {phone}"
+)
+
     return ConversationHandler.END
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
