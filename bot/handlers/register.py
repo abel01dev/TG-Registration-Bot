@@ -54,7 +54,7 @@ async def get_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(f"✅ Registration complete!\n\nID: {user_id}\nName: {name}\nPhone: {phone}")
 
     await update.message.reply_text(
-    f"✅ Registration complete!\n\n🆔 ID: {user_id}\n👤 Name: {name}\n📞 Phone: {phone}"
+    f"✅ Registration complete!\n\n ID: {user_id}\n Name: {name}\n Phone: {phone}"
 )
 
     return ConversationHandler.END
