@@ -49,14 +49,13 @@ async def get_phone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["phone"] = phone
     name = context.user_data["name"]
 
-    add_user(name, phone)
-# directly display that registration is complete no separate function needed
+    user_id = add_user(name, phone)
 
-    print(f"✅ Registration complete!\n\nName: {name}\nPhone: {phone}")
+    print(f"✅ Registration complete!\n\nID: {user_id}\nName: {name}\nPhone: {phone}")
 
     await update.message.reply_text(
-    f"✅ Registration complete!\n\nName: {name}\nPhone: {phone}"
-)
+        f"✅ Registration complete!\n\n ID: {user_id}\n Name: {name}\n Phone: {phone}"
+    )
 
     return ConversationHandler.END
 
