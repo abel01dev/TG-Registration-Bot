@@ -26,14 +26,14 @@ async def check(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["Reister", "Check"]]
+    keyboard = [["/reister", "/check"]]
     reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True)
     await update.message.reply_text(
         "👋 Welcome to the Registration Bot!\n\nUse the buttons below to register or check your info", reply_markup=reply_markup
     )
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [["Reister", "Check"]]
+    keyboard = [["/reister", "/check"]]
     reply_markup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True, resize_keyboard=True)
     await update.message.reply_text(
         "Welcome! This is a simple registration bot!\n"
