@@ -18,7 +18,7 @@ async def check(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_name = user.first_name
     found_entries = [entry for entry in data if entry["name"] == user_name]
     if found_entries: 
-        entries_text = "".join([f'Name: {e[name]}, Phone: {e[phone]}' for e in found_entries])
+        entries_text = "".join([f'Name: {e["name"]}, Phone: {e["phone"]}' for e in found_entries])
         await update.message.reply_text(f"You are registered: {entries_text}")
     else:
         await update.message.reply_text("You are not registered yet. Use /regiser to register")
