@@ -6,24 +6,13 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from telegram.request import HTTPXRequest
 from bot.handlers.register import register_handler
+from bot.handlers.check import check_handler
 from telegram import ReplyKeyboardMarkup
 from  bot.utils.db import load_data
 
 load_dotenv()
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 
-async def check(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user = update.effective_user
-    data = load_data()
-    user_name = user.first_name
-    found_entries = [entry for entry in data if entry["name"] == user_name]
-    if found_entries: 
-        entries_text = "".join([f'Name: {e["name"]}, Phone: {e["phone"]}' for e in found_entries])
-        await update.message.reply_text(f"You are registered: {entries_text}")
-    else:
-        await update.message.reply_text("You are not registered yet. Use /regiser to register")
-
-    
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [["/register", "/check"]]
@@ -50,7 +39,7 @@ def main():
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
-    app.add_handler(CommandHandler("check", check))
+    app.add_handler(check_handler)
     app.add_handler(register_handler)
 
 
