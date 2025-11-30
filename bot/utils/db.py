@@ -44,3 +44,15 @@ def add_user(name, phone):
     data.append(user_entry)
     save_data(data)
     return user_id
+def find_user_by_phone(phone):
+    data = load_data()
+    for entry in data:
+        if entry.get("phone") == phone:
+            return entry
+    return None
+#def find_user_by_name(name):
+    data = load_data()
+    for entry in data:
+        if entry.get("name") == name:
+            return entry
+    return None#
